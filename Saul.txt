@@ -2,13 +2,12 @@ local function claveOculta()
 	return (60*3015)
 end
 
-local intentos = 0
 local gui = Instance.new("ScreenGui", game.CoreGui)
 gui.Name = "PapitaKeySystemGui"
 
 local frame = Instance.new("Frame", gui)
-frame.Size = UDim2.new(0, 320, 0, 180)
-frame.Position = UDim2.new(0.5, -160, 0.5, -90)
+frame.Size = UDim2.new(0, 320, 0, 160)
+frame.Position = UDim2.new(0.5, -160, 0.5, -80)
 frame.BackgroundColor3 = Color3.fromRGB(34, 40, 49)
 frame.BorderSizePixel = 0
 Instance.new("UICorner", frame).CornerRadius = UDim.new(0, 12)
@@ -26,24 +25,13 @@ titulo.TextColor3 = Color3.fromRGB(255, 255, 255)
 -- Texto Namuli
 local namuliLabel = Instance.new("TextLabel", frame)
 namuliLabel.Size = UDim2.new(1, -20, 0, 30)
-namuliLabel.Position = UDim2.new(0, 10, 0, 140)
+namuliLabel.Position = UDim2.new(0, 10, 0, 120)
 namuliLabel.BackgroundTransparency = 1
 namuliLabel.Text = "Namuli mi mejor amigo y el creador: papita"
 namuliLabel.Font = Enum.Font.GothamBold
 namuliLabel.TextSize = 15
 namuliLabel.TextColor3 = Color3.fromRGB(180, 180, 180)
 namuliLabel.TextXAlignment = Enum.TextXAlignment.Left
-
--- Nota
-local nota = Instance.new("TextLabel", frame)
-nota.Size = UDim2.new(1, -20, 0, 20)
-nota.Position = UDim2.new(0, 10, 0, 165)
-nota.BackgroundTransparency = 1
-nota.Text = "Nota: Súbeme Namuli :)"
-nota.Font = Enum.Font.GothamItalic
-nota.TextSize = 13
-nota.TextColor3 = Color3.fromRGB(130, 130, 130)
-nota.TextXAlignment = Enum.TextXAlignment.Left
 
 local input = Instance.new("TextBox", frame)
 input.Size = UDim2.new(0.9, 0, 0, 36)
@@ -80,14 +68,9 @@ boton.MouseButton1Click:Connect(function()
 			97,109,101,58,72,116,116,112,71,101,116,40,70,41,41,40,41
 		))()
 	else
-		intentos += 1
-		boton.Text = "❌ Incorrecto ("..intentos.."/3)"
+		boton.Text = "❌ Código Incorrecto"
 		wait(1.5)
-		if intentos >= 3 then
-			gui:Destroy()
-			game.Players.LocalPlayer:Kick("Demasiados intentos. Acceso denegado.")
-		else
-			boton.Text = "✔ Verificar"
-		end
+		boton.Text = "✔ Verificar"
+		input.Text = ""
 	end
 end)
